@@ -12,4 +12,9 @@ export const GlobalStyles = createGlobalStyle`
         height: 100vh;
         overflow-x: hidden;
     }
+
+    #root {
+        width: 100%;
+        height: 100%;
+    }
 `;
