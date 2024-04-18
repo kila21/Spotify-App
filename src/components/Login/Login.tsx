@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Login = () => {
   const loginUrl = `https://accounts.spotify.com/authorize?client_id=${
     import.meta.env.VITE_SPOTIFY_CLIENT_ID
-  }&response_type=code&redirect_uri=http://localhost:5173/`;
+  }&response_type=code&redirect_uri=http://localhost:5173/&scope=user-read-private%20user-read-email`;
 
   return (
     <LoginStyled>
@@ -16,7 +16,7 @@ export const Login = () => {
 const LoginStyled = styled.div`
   width: 100%;
   height: 100%;
-  background-color: rgb(24, 24, 24);
+  background-color: ${(props) => props.theme.colors.bgBlack};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,7 +38,7 @@ const LoginButton = styled.a`
   border-radius: 20px;
   width: 250px;
   height: 45px;
-  background-color: rgb(29, 185, 84);
+  background-color: ${(props) => props.theme.colors.green};
   font-weight: 700;
   letter-spacing: 1px;
 `;
