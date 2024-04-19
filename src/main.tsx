@@ -1,18 +1,35 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-
-import App from "./App.tsx";
+import {
+  Navigate,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
 
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/theme.ts";
 import { GlobalStyles } from "./styles/GlobalStyles.ts";
 
-// import { Profile } from "./components/Profile/Profile.tsx";
+import App from "./App.tsx";
+import { Profile } from "./components/Profile/Profile.tsx";
 
 const router = createBrowserRouter([
-  { path: "/", element: <App /> },
-  // { path: "/profile", element: <Profile /> },
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      { path: "/", element: <Navigate to="/profile" /> },
+      { path: "/profile", element: <Profile /> },
+      { path: "/top-artists", element: <Profile /> },
+      { path: "/top-tracks", element: <Profile /> },
+      { path: "/recent", element: <Profile /> },
+      { path: "/playlist", element: <Profile /> },
+    ],
+  },
+  {
+    path: "*",
+    element: <div>ERROOOOOOOOOOOR</div>,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
