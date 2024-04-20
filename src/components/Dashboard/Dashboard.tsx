@@ -47,6 +47,7 @@ export const Dashboard = () => {
 const DashboardStyled = styled.div`
   position: fixed;
   background-color: rgb(4, 3, 6);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;
 
   @media (max-width: 768px) {
     width: 100%;
@@ -78,6 +79,7 @@ const DashboardListItem = styled.li<{ $active: boolean }>`
   align-items: center;
   justify-content: center;
   color: ${(props) => (props.$active ? "white" : "rgb(155, 155, 155)")};
+  background-color: ${(props) => props.$active && "rgb(24, 24, 24)"};
 
   @media (max-width: 768px) {
     width: 20%;
