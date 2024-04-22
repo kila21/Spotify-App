@@ -67,7 +67,10 @@ export const Profile = React.memo(() => {
               <span>PLAYLIST</span>
             </ProfileFollower>
           </ProfileFollowerContainer>
-          <ProfileLogOut onClick={Logout}>logout</ProfileLogOut>
+
+          <ProfileLogoutContainer>
+            <ProfileLogOut onClick={Logout}>logout</ProfileLogOut>
+          </ProfileLogoutContainer>
 
           <ProfileNavContainer>
             <ProfileNavItem>
@@ -95,7 +98,7 @@ const ProfileStyled = styled.div`
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
   align-items: center;
   overflow-y: scroll;
 
@@ -105,7 +108,6 @@ const ProfileStyled = styled.div`
   }
   @media (max-width: 769px) {
     width: 100%;
-
     min-height: 100vh;
     padding-bottom: 90px;
   }
@@ -119,6 +121,8 @@ const ProfileImageContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 20px;
+  margin-top: 50px;
   & > svg {
     width: 60%;
     height: 60%;
@@ -133,11 +137,13 @@ const ProfileImage = styled.img`
 const ProfileName = styled.h1`
   color: ${(props) => props.theme.colors.green};
   font-size: 50px;
+  margin-bottom: 20px;
 `;
 
 const ProfileFollowerContainer = styled.div`
   display: flex;
   justify-content: center;
+  margin-bottom: 30px;
 `;
 
 const ProfileFollower = styled.div`
@@ -148,15 +154,17 @@ const ProfileFollower = styled.div`
   margin-right: 18px;
 
   & > span {
-    font-size: 1.5vw;
+    font-size: 12px;
     height: 20px;
     &:first-child {
+      font-size: 20px;
       color: ${(props) => props.theme.colors.green};
       margin-bottom: 15px;
     }
   }
 `;
 
+const ProfileLogoutContainer = styled.div``;
 const ProfileLogOut = styled.div`
   width: 120px;
   height: 40px;
@@ -166,6 +174,7 @@ const ProfileLogOut = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  /* margin-bottom: 10px; */
 
   & > a {
     outline: none;
@@ -178,11 +187,11 @@ const ProfileNavContainer = styled.div`
   width: 100%;
   height: 50px;
   display: flex;
-  margin-top: 30px;
+  margin-top: 80px;
   justify-content: center;
   color: white;
 
-  @media (max-width: 768px) {
+  @media (max-width: 769px) {
     flex-direction: column;
   }
 `;
@@ -192,8 +201,9 @@ const ProfileNavItem = styled.div`
   align-items: center;
   justify-content: space-around;
   height: 100%;
-  width: 40%;
-  @media (max-width: 768px) {
+  width: 45%;
+  margin-right: 15px;
+  @media (max-width: 769px) {
     width: 100%;
     margin-bottom: 20px;
   }

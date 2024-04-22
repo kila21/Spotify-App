@@ -56,7 +56,7 @@ const DashboardStyled = styled.div`
     left: 0;
   }
 
-  @media (min-width: 769px) {
+  @media (min-width: 768px) {
     width: 100px;
     height: 100%;
     top: 0;
@@ -69,7 +69,7 @@ const DashboardList = styled.ul`
   width: 100%;
   height: 100%;
 
-  @media (min-width: 769px) {
+  @media (min-width: 768px) {
     flex-direction: column;
   }
 `;
@@ -81,12 +81,12 @@ const DashboardListItem = styled.li<{ $active: boolean }>`
   color: ${(props) => (props.$active ? "white" : "rgb(155, 155, 155)")};
   background-color: ${(props) => props.$active && "rgb(24, 24, 24)"};
 
-  @media (max-width: 768px) {
+  @media (max-width: 769px) {
     width: 20%;
     height: 100%;
     border-top: ${(props) => props.$active && "3px solid rgb(30, 215, 96)"};
   }
-  @media (min-width: 769px) {
+  @media (min-width: 768px) {
     width: 100%;
     height: 20%;
     border-left: ${(props) => props.$active && "5px solid rgb(30, 215, 96)"};
