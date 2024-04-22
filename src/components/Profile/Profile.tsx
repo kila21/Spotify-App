@@ -7,6 +7,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { getUserProfile } from "../../Api/Api";
 import { UserProfileInfo } from "../../Types/UserProfileInfo";
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const Profile = React.memo(() => {
   const [userProfileData, setUserProfileData] =
@@ -16,6 +17,7 @@ export const Profile = React.memo(() => {
     if (!userProfileData) {
       if (localStorage.getItem("spotify-access-token")) {
         getUserProfile().then((data) => {
+          console.log(data.user);
           const newData: UserProfileInfo = {
             followers: data?.user?.followers?.total,
             image: data?.user?.images?.[0],
@@ -66,6 +68,22 @@ export const Profile = React.memo(() => {
             </ProfileFollower>
           </ProfileFollowerContainer>
           <ProfileLogOut onClick={Logout}>logout</ProfileLogOut>
+
+          <ProfileNavContainer>
+            <ProfileNavItem>
+              <ProfileNavTitle>Top artists of all time</ProfileNavTitle>
+              <ProfileLogOut>
+                <Link to={"/top-artists"}>see more</Link>
+              </ProfileLogOut>
+            </ProfileNavItem>
+
+            <ProfileNavItem>
+              <ProfileNavTitle>Top Tracks of all time</ProfileNavTitle>
+              <ProfileLogOut>
+                <Link to={"/top-tracks"}>see more</Link>
+              </ProfileLogOut>
+            </ProfileNavItem>
+          </ProfileNavContainer>
         </ProfileStyled>
       )}
     </>
@@ -79,6 +97,7 @@ const ProfileStyled = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  overflow-y: scroll;
 
   @media (min-width: 768px) {
     margin-left: 100px;
@@ -86,7 +105,9 @@ const ProfileStyled = styled.div`
   }
   @media (max-width: 769px) {
     width: 100%;
-    height: calc(100vh - 70px);
+
+    min-height: 100vh;
+    padding-bottom: 90px;
   }
 `;
 
@@ -127,7 +148,7 @@ const ProfileFollower = styled.div`
   margin-right: 18px;
 
   & > span {
-    font-size: 13px;
+    font-size: 1.5vw;
     height: 20px;
     &:first-child {
       color: ${(props) => props.theme.colors.green};
@@ -145,4 +166,40 @@ const ProfileLogOut = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  & > a {
+    outline: none;
+    text-decoration: none;
+    color: white;
+  }
+`;
+
+const ProfileNavContainer = styled.div`
+  width: 100%;
+  height: 50px;
+  display: flex;
+  margin-top: 30px;
+  justify-content: center;
+  color: white;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+const ProfileNavItem = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  width: 40%;
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+`;
+
+const ProfileNavTitle = styled.p`
+  font-size: 2vw;
+  text-transform: capitalize;
 `;
