@@ -210,6 +210,6 @@ const ProfileNavItem = styled.div`
 `;
 
 const ProfileNavTitle = styled.p`
-  font-size: 2vw;
+  font-size: 16px;
   text-transform: capitalize;
 `;
