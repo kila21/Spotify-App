@@ -102,11 +102,11 @@ const ProfileStyled = styled.div`
   align-items: center;
   overflow-y: scroll;
 
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     margin-left: 100px;
     width: 100%;
   }
-  @media (max-width: 769px) {
+  @media (max-width: 768px) {
     width: 100%;
     min-height: 100vh;
     padding-bottom: 90px;
@@ -191,7 +191,7 @@ const ProfileNavContainer = styled.div`
   justify-content: center;
   color: white;
 
-  @media (max-width: 769px) {
+  @media (max-width: 768px) {
     flex-direction: column;
   }
 `;
@@ -203,7 +203,7 @@ const ProfileNavItem = styled.div`
   height: 100%;
   width: 45%;
   margin-right: 15px;
-  @media (max-width: 769px) {
+  @media (max-width: 768px) {
     width: 100%;
     margin-bottom: 20px;
   }
