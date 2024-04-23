@@ -8,6 +8,7 @@ import { theme } from "./styles/theme.ts";
 
 import App from "./App.tsx";
 import { Profile } from "./components/Profile/Profile.tsx";
+import { Artists } from "./components/Artists/Artists.tsx";
 import { Tracks } from "./components/Tracks/Tracks.tsx";
 
 const router = createBrowserRouter([
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "/profile", element: <Profile /> },
-      { path: "/top-artists", element: <Profile /> },
+      { path: "/top-artists", element: <Artists /> },
       { path: "/top-tracks", element: <Tracks /> },
       { path: "/recent", element: <Profile /> },
       { path: "/playlist", element: <Profile /> },
