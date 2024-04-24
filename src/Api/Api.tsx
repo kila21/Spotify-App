@@ -88,7 +88,7 @@ export const getUserProfile = () => {
   );
 };
 
-// users listened artists
+// user's top artists
 export const getUserTopArtists = (time: string) => {
   if (time === "all") {
     return axios.get(
@@ -103,6 +103,26 @@ export const getUserTopArtists = (time: string) => {
   } else {
     return axios.get(
       "https://api.spotify.com/v1/me/top/artists?time_range=short_term",
+      { headers }
+    );
+  }
+};
+
+// get user's top tracks
+export const getUserTopTracks = (time: string) => {
+  if (time === "all") {
+    return axios.get(
+      "https://api.spotify.com/v1/me/top/tracks?time_range=long_term",
+      { headers }
+    );
+  } else if (time === "6") {
+    return axios.get(
+      "https://api.spotify.com/v1/me/top/tracks?time_range=medium_term",
+      { headers }
+    );
+  } else {
+    return axios.get(
+      "https://api.spotify.com/v1/me/top/tracks?time_range=short_term",
       { headers }
     );
   }
