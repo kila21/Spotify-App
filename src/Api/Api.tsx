@@ -87,3 +87,23 @@ export const getUserProfile = () => {
     })
   );
 };
+
+// users listened artists
+export const getUserTopArtists = (time: string) => {
+  if (time === "all") {
+    return axios.get(
+      "https://api.spotify.com/v1/me/top/artists?time_range=long_term",
+      { headers }
+    );
+  } else if (time === "6") {
+    return axios.get(
+      "https://api.spotify.com/v1/me/top/artists?time_range=medium_term",
+      { headers }
+    );
+  } else {
+    return axios.get(
+      "https://api.spotify.com/v1/me/top/artists?time_range=short_term",
+      { headers }
+    );
+  }
+};

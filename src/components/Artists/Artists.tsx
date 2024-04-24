@@ -1,22 +1,43 @@
+import { useState } from "react";
 import styled from "styled-components";
+import { ArtistsData } from "./ArtistsData";
 
 export const Artists = () => {
+  const [active, setActive] = useState(0);
+
   return (
     <ArtistsStyled>
       <ArtistsHeader>
         <ArtistsHeading>Top Artists</ArtistsHeading>
         <ArtistHeaderList>
-          <ArtistsHeaderListItem>All Time</ArtistsHeaderListItem>
-          <ArtistsHeaderListItem>Last 6 Months</ArtistsHeaderListItem>
-          <ArtistsHeaderListItem>Last 4 Weeks</ArtistsHeaderListItem>
+          <ArtistsHeaderListItem
+            $active={active === 0}
+            onClick={() => setActive(0)}
+          >
+            All Time
+          </ArtistsHeaderListItem>
+          <ArtistsHeaderListItem
+            $active={active === 1}
+            onClick={() => setActive(1)}
+          >
+            Last 6 Months
+          </ArtistsHeaderListItem>
+          <ArtistsHeaderListItem
+            $active={active === 2}
+            onClick={() => setActive(2)}
+          >
+            Last 4 Weeks
+          </ArtistsHeaderListItem>
         </ArtistHeaderList>
       </ArtistsHeader>
+      <ArtistsData load={active === 0 ? "all" : active === 1 ? "6" : "4"} />
     </ArtistsStyled>
   );
 };
 
 const ArtistsStyled = styled.div`
   display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   background-color: rgb(24, 24, 24);
@@ -71,7 +92,10 @@ const ArtistHeaderList = styled.div`
   }
 `;
 
-const ArtistsHeaderListItem = styled.li`
+const ArtistsHeaderListItem = styled.li<{ $active: boolean }>`
   outline: none;
   list-style: none;
+  color: ${(props) => props.$active && "white"};
+  border-bottom: ${(props) => props.$active && "1px solid white"};
+  cursor: pointer;
 `;
