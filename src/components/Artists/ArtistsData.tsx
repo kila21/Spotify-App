@@ -7,31 +7,13 @@ export const ArtistsData = (props: { load: string }) => {
   const [artistsData, setArtistsData] = useState<artistsItem[] | null>(null);
 
   useEffect(() => {
-    if (props.load === "all") {
-      getUserTopArtists("all")
-        .then((data) => {
-          setArtistsData(data.data.items);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else if (props.load === "6") {
-      getUserTopArtists("6")
-        .then((data) => {
-          setArtistsData(data.data.items);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      getUserTopArtists("4")
-        .then((data) => {
-          setArtistsData(data.data.items);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
+    getUserTopArtists(props.load)
+      .then((data) => {
+        setArtistsData(data.data.items);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [props.load]);
 
   const openArtistSpotify = (artist: artistsItem) => {
