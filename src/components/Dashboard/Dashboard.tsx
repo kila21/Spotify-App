@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,6 +14,21 @@ import { Link } from "react-router-dom";
 
 export const Dashboard = () => {
   const [activeItem, setActiveItem] = useState<number>(0);
+
+  useEffect(() => {
+    switch (window.location.pathname) {
+      case "/profile":
+        return setActiveItem(0);
+      case "/top-artists":
+        return setActiveItem(1);
+      case "/top-tracks":
+        return setActiveItem(2);
+      case "/recent":
+        return setActiveItem(3);
+      case "/playlist":
+        return setActiveItem(4);
+    }
+  }, []);
 
   const navList = [
     { title: "profile", icon: faUser },
