@@ -17,7 +17,6 @@ export const Profile = React.memo(() => {
     if (!userProfileData) {
       if (localStorage.getItem("spotify-access-token")) {
         getUserProfile().then((data) => {
-          console.log(data.user);
           const newData: UserProfileInfo = {
             followers: data?.user?.followers?.total,
             image: data?.user?.images?.[0],
