@@ -10,10 +10,11 @@ import {
   faList,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export const Dashboard = () => {
   const [activeItem, setActiveItem] = useState<number>(0);
+  const location = useLocation();
 
   useEffect(() => {
     switch (window.location.pathname) {
@@ -28,7 +29,7 @@ export const Dashboard = () => {
       case "/playlist":
         return setActiveItem(4);
     }
-  }, []);
+  }, [location]);
 
   const navList = [
     { title: "profile", icon: faUser },
