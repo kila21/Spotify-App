@@ -2,22 +2,28 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getUserTopTracks } from "../../Api/Api";
 import { TracksItem } from "../../Types/ApiTypes/getTopTracksResponse";
+import { useLocation, useNavigate } from "react-router";
 
 export const TracksData = (props: { load: string }) => {
   const [tracks, setTracks] = useState<TracksItem[] | null>(null);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getUserTopTracks(props.load).then((data) => {
-      console.log(data.data);
       setTracks(data.data.items);
     });
   }, [props.load]);
+
+  const clickHandler = (track: TracksItem) => {
+    navigate(`${location.pathname}/${track.id}`);
+  };
 
   return (
     <TracksDataStyled>
       {tracks &&
         tracks.map((t, i) => (
-          <TracksListItem key={t.name + i}>
+          <TracksListItem onClick={() => clickHandler(t)} key={t.name + i}>
             <TracksListItemImage src={t.album.images[0].url} />
             <TracksListItemContent>
               <TracksListItemName>{t.name}</TracksListItemName>

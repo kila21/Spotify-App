@@ -133,3 +133,9 @@ export const getUserTopTracks = (time: string) => {
 export const getSingleArtist = (id: string) => {
   return axios.get(`https://api.spotify.com/v1/artists/${id}`, { headers });
 };
+
+// get Single Track by Id
+
+export const getSingleTrack = (id: string) => {
+  return axios.get(`https://api.spotify.com/v1/tracks/${id}`, { headers });
+};

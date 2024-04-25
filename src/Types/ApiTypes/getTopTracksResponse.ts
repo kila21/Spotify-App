@@ -1,4 +1,4 @@
-interface ArtistsType {
+export interface ArtistsType {
   external_urls: {
     spotify: string;
   };
