@@ -96,6 +96,7 @@ const SingleArtistImage = styled.img`
   width: 200px;
   height: 200px;
   border-radius: 50%;
+  margin-top: 50px;
 
   @media (min-width: 769px) {
     width: 300px;
@@ -116,12 +117,13 @@ const SingleArtistDataContainer = styled.div`
   width: 100%;
   min-height: 80px;
   margin-top: 50px;
+  margin-bottom: 100px;
 `;
 
 const SingleArtistDatatable = styled.div`
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: 32%;
   height: 100%;
 `;
 

@@ -127,3 +127,9 @@ export const getUserTopTracks = (time: string) => {
     );
   }
 };
+
+// get Single Artist by Id
+
+export const getSingleArtist = (id: string) => {
+  return axios.get(`https://api.spotify.com/v1/artists/${id}`, { headers });
+};
