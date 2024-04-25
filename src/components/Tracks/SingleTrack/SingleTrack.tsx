@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { getSingleTrack } from "../../../Api/Api";
 import { ArtistsType } from "../../../Types/ApiTypes/getTopTracksResponse";
 import { artistsItem } from "../../../Types/ApiTypes/getTopArtistsResponse";
+import { TrackFeatures } from "./TrackFeatures";
 
 interface SingleTrackDataType {
   name: string;
@@ -13,6 +14,7 @@ interface SingleTrackDataType {
   image: string;
   artists: ArtistsType[];
   url: string;
+  popularity: number;
 }
 
 export const SingleTrack = () => {
@@ -30,6 +32,7 @@ export const SingleTrack = () => {
           date: data.data?.album.release_date,
           artists: data.data?.artists.map((item: artistsItem) => item.name),
           url: data.data?.external_urls.spotify,
+          popularity: data.data?.popularity,
         });
       });
     } else {
@@ -39,6 +42,7 @@ export const SingleTrack = () => {
         date: location.state.album.release_date,
         artists: location.state.artists.map((item: artistsItem) => item.name),
         url: location.state.external_urls.spotify,
+        popularity: location.state?.popularity,
       });
     }
   }, []);
@@ -60,6 +64,10 @@ export const SingleTrack = () => {
           </SingleTrackButton>
         </SingleTrackInformation>
       </SingleTrackInfoContainer>
+      <TrackFeatures
+        id={location.pathname.split("/")[2]}
+        popularity={trackData?.popularity}
+      />
     </SingleTrackStyled>
   );
 };
