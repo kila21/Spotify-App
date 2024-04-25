@@ -25,7 +25,6 @@ export const SingleTrack = () => {
   useEffect(() => {
     if (!location.state) {
       getSingleTrack(location.pathname.split("/")[2]).then((data) => {
-        console.log(data.data);
         setTrackData({
           name: data.data?.name,
           image: data.data?.album.images[0].url,
