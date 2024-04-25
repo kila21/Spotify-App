@@ -139,3 +139,11 @@ export const getSingleArtist = (id: string) => {
 export const getSingleTrack = (id: string) => {
   return axios.get(`https://api.spotify.com/v1/tracks/${id}`, { headers });
 };
+
+// get single track features by id
+
+export const getTrackFeatures = (id: string) => {
+  return axios.get(`https://api.spotify.com/v1/audio-analysis/${id}`, {
+    headers,
+  });
+};
