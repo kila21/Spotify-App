@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getUserTopArtists } from "../../Api/Api";
 import { artistsItem } from "../../Types/ApiTypes/getTopArtistsResponse";
+import { useLocation, useNavigate } from "react-router";
 
 export const ArtistsData = (props: { load: string }) => {
   const [artistsData, setArtistsData] = useState<artistsItem[] | null>(null);
+  const navigation = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     getUserTopArtists(props.load)
@@ -16,8 +19,10 @@ export const ArtistsData = (props: { load: string }) => {
       });
   }, [props.load]);
 
-  const openArtistSpotify = (artist: artistsItem) => {
-    window.open(artist.external_urls.spotify, "_blank");
+  const oponSingleArtist = (artist: artistsItem) => {
+    navigation(`${location.pathname}/${artist.id}`, {
+      state: artist,
+    });
   };
 
   return (
@@ -26,7 +31,7 @@ export const ArtistsData = (props: { load: string }) => {
         artistsData.map((artist, index) => {
           return (
             <ArtistsItem
-              onClick={() => openArtistSpotify(artist)}
+              onClick={() => oponSingleArtist(artist)}
               key={artist?.name + index}
             >
               <ArtistsImg
