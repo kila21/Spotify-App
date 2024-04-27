@@ -8,6 +8,7 @@ import { getUserProfile } from "../../Api/Api";
 import { UserProfileInfo } from "../../Types/UserProfileInfo";
 import React from "react";
 import { Link } from "react-router-dom";
+import { Loading } from "../Loading/Loading";
 
 export const Profile = React.memo(() => {
   const [userProfileData, setUserProfileData] =
@@ -38,7 +39,7 @@ export const Profile = React.memo(() => {
   return (
     <>
       {!userProfileData ? (
-        <div>Loading User........</div>
+        <Loading />
       ) : (
         <ProfileStyled>
           <ProfileImageContainer>
@@ -47,7 +48,10 @@ export const Profile = React.memo(() => {
             )}
 
             {userProfileData && userProfileData?.image?.url && (
-              <ProfileImage src={userProfileData.image.url} />
+              <ProfileImage
+                src={userProfileData.image.url}
+                alt={userProfileData.display_name + "avatar"}
+              />
             )}
           </ProfileImageContainer>
           <ProfileName>{userProfileData?.display_name}</ProfileName>
