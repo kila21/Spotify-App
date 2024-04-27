@@ -147,3 +147,11 @@ export const getTrackFeatures = (id: string) => {
     headers,
   });
 };
+
+// get recently played tracks
+
+export const getRecentlyPlayedTracks = () => {
+  return axios.get("https://api.spotify.com/v1/me/player/recently-played", {
+    headers,
+  });
+};
