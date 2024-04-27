@@ -7,6 +7,7 @@ import { getSingleTrack } from "../../../Api/Api";
 import { ArtistsType } from "../../../Types/ApiTypes/getTopTracksResponse";
 import { artistsItem } from "../../../Types/ApiTypes/getTopArtistsResponse";
 import { TrackFeatures } from "./TrackFeatures";
+import { Loading } from "../../Loading/Loading";
 
 interface SingleTrackDataType {
   name: string;
@@ -51,23 +52,31 @@ export const SingleTrack = () => {
   };
 
   return (
-    <SingleTrackStyled>
-      <SingleTrackInfoContainer>
-        <SingleTrackImage src={trackData?.image} alt={trackData?.name} />
-        <SingleTrackInformation>
-          <SingleTrackName>{trackData?.name}</SingleTrackName>
-          <SingleTrackArtist>{trackData?.artists.join(", ")}</SingleTrackArtist>
-          <SingleTrackDate>{trackData?.date}</SingleTrackDate>
-          <SingleTrackButton onClick={handleClick}>
-            play on spotify
-          </SingleTrackButton>
-        </SingleTrackInformation>
-      </SingleTrackInfoContainer>
-      <TrackFeatures
-        id={location.pathname.split("/")[2]}
-        popularity={trackData?.popularity}
-      />
-    </SingleTrackStyled>
+    <>
+      {!trackData ? (
+        <Loading />
+      ) : (
+        <SingleTrackStyled>
+          <SingleTrackInfoContainer>
+            <SingleTrackImage src={trackData?.image} alt={trackData?.name} />
+            <SingleTrackInformation>
+              <SingleTrackName>{trackData?.name}</SingleTrackName>
+              <SingleTrackArtist>
+                {trackData?.artists.join(", ")}
+              </SingleTrackArtist>
+              <SingleTrackDate>{trackData?.date}</SingleTrackDate>
+              <SingleTrackButton onClick={handleClick}>
+                play on spotify
+              </SingleTrackButton>
+            </SingleTrackInformation>
+          </SingleTrackInfoContainer>
+          <TrackFeatures
+            id={location.pathname.split("/")[2]}
+            popularity={trackData?.popularity}
+          />
+        </SingleTrackStyled>
+      )}
+    </>
   );
 };
 
