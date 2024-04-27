@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Login = () => {
   const loginUrl = `https://accounts.spotify.com/authorize?client_id=${
     import.meta.env.VITE_SPOTIFY_CLIENT_ID
-  }&response_type=code&redirect_uri=http://localhost:5173/profile&scope=user-read-private%20user-read-email%20user-follow-read%20user-top-read`;
+  }&response_type=code&redirect_uri=http://localhost:5173/profile&scope=user-read-private%20user-read-email%20user-follow-read%20user-top-read%20user-read-recently-played`;
 
   return (
     <LoginStyled>
