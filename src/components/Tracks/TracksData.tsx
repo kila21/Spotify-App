@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { getUserTopTracks } from "../../Api/Api";
 import { TracksItem } from "../../Types/ApiTypes/getTopTracksResponse";
 import { useLocation, useNavigate } from "react-router";
+import { Loading } from "../Loading/Loading";
 
 export const TracksData = (props: { load: string }) => {
   const [tracks, setTracks] = useState<TracksItem[] | null>(null);
@@ -20,26 +21,32 @@ export const TracksData = (props: { load: string }) => {
   };
 
   return (
-    <TracksDataStyled>
-      {tracks &&
-        tracks.map((t, i) => (
-          <TracksListItem onClick={() => clickHandler(t)} key={t.name + i}>
-            <TracksListItemImage src={t.album.images[0].url} />
-            <TracksListItemContent>
-              <TracksListItemName>{t.name}</TracksListItemName>
-              <TrackListItemArtists>
-                {t.artists.map((a) => a.name).join(", ")}
-              </TrackListItemArtists>
-            </TracksListItemContent>
-            <TracksDuration>
-              {Math.floor(t.duration_ms / 60000)} :{" "}
-              {Math.floor((t.duration_ms / 1000) % 60) < 10
-                ? "0" + Math.floor((t.duration_ms / 1000) % 60)
-                : Math.floor((t.duration_ms / 1000) % 60)}
-            </TracksDuration>
-          </TracksListItem>
-        ))}
-    </TracksDataStyled>
+    <>
+      {!tracks ? (
+        <Loading />
+      ) : (
+        <TracksDataStyled>
+          {tracks &&
+            tracks.map((t, i) => (
+              <TracksListItem onClick={() => clickHandler(t)} key={t.name + i}>
+                <TracksListItemImage src={t.album.images[0].url} />
+                <TracksListItemContent>
+                  <TracksListItemName>{t.name}</TracksListItemName>
+                  <TrackListItemArtists>
+                    {t.artists.map((a) => a.name).join(", ")}
+                  </TrackListItemArtists>
+                </TracksListItemContent>
+                <TracksDuration>
+                  {Math.floor(t.duration_ms / 60000)} :{" "}
+                  {Math.floor((t.duration_ms / 1000) % 60) < 10
+                    ? "0" + Math.floor((t.duration_ms / 1000) % 60)
+                    : Math.floor((t.duration_ms / 1000) % 60)}
+                </TracksDuration>
+              </TracksListItem>
+            ))}
+        </TracksDataStyled>
+      )}{" "}
+    </>
   );
 };
 
