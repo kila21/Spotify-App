@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { getUserTopArtists } from "../../Api/Api";
 import { artistsItem } from "../../Types/ApiTypes/getTopArtistsResponse";
 import { useLocation, useNavigate } from "react-router";
+import { Loading } from "../Loading/Loading";
 
 export const ArtistsData = (props: { load: string }) => {
   const [artistsData, setArtistsData] = useState<artistsItem[] | null>(null);
@@ -26,23 +27,29 @@ export const ArtistsData = (props: { load: string }) => {
   };
 
   return (
-    <ArtistsDataStyled>
-      {artistsData &&
-        artistsData.map((artist, index) => {
-          return (
-            <ArtistsItem
-              onClick={() => oponSingleArtist(artist)}
-              key={artist?.name + index}
-            >
-              <ArtistsImg
-                src={artist.images[0].url}
-                alt={artist.name + "profile"}
-              />
-              <ArtistsName>{artist.name}</ArtistsName>
-            </ArtistsItem>
-          );
-        })}
-    </ArtistsDataStyled>
+    <>
+      {!artistsData ? (
+        <Loading />
+      ) : (
+        <ArtistsDataStyled>
+          {artistsData &&
+            artistsData.map((artist, index) => {
+              return (
+                <ArtistsItem
+                  onClick={() => oponSingleArtist(artist)}
+                  key={artist?.name + index}
+                >
+                  <ArtistsImg
+                    src={artist.images[0].url}
+                    alt={artist.name + "profile"}
+                  />
+                  <ArtistsName>{artist.name}</ArtistsName>
+                </ArtistsItem>
+              );
+            })}
+        </ArtistsDataStyled>
+      )}
+    </>
   );
 };
 
