@@ -24,11 +24,11 @@ const animation = keyframes`
 
 const LoadingStyled = styled.div`
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: center;
   width: 100%;
   background-color: rgb(24, 24, 24);
-  overflow-y: scroll;
 
   @media (min-width: 769px) {
     margin-left: 100px;
@@ -52,4 +52,8 @@ const SingleLoadingBar = styled.div<{ $index: number }>`
   animation-duration: 400ms;
   animation-delay: ${(props) => `calc(100ms * ${props.$index})`};
   animation-direction: alternate;
+
+  @media (max-width: 768px) {
+    transform: translateX(-350%);
+  }
 `;
