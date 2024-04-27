@@ -29,6 +29,7 @@ const LoadingStyled = styled.div`
   justify-content: center;
   width: 100%;
   background-color: rgb(24, 24, 24);
+  overflow: hidden;
 
   @media (min-width: 769px) {
     margin-left: 100px;

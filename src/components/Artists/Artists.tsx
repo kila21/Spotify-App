@@ -41,7 +41,8 @@ const ArtistsStyled = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgb(24, 24, 24);
-  overflow-y: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   @media (min-width: 769px) {
     margin-left: 100px;

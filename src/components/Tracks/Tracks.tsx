@@ -40,7 +40,8 @@ const TracksStyled = styled.div`
   flex-direction: column;
   width: 100%;
   background-color: rgb(24, 24, 24);
-  overflow-y: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   @media (min-width: 769px) {
     margin-left: 100px;
