@@ -44,7 +44,7 @@ export const SingleTrack = () => {
         popularity: location.state?.popularity,
       });
     }
-  }, []);
+  }, [location.pathname, location.state]);
 
   const handleClick = () => {
     window.open(trackData?.url, "_blank");

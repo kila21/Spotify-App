@@ -37,7 +37,7 @@ export const SingleArtist = () => {
       };
       setArtistData(newData);
     }
-  }, []);
+  }, [location.state, location.pathname]);
   return (
     <SingleArtistStyled>
       <SingleArtistImage
@@ -54,7 +54,7 @@ export const SingleArtist = () => {
         <SingleArtistDatatable>
           {artistData?.genres.map((i) => {
             return (
-              <SingleArtistDataInfo>
+              <SingleArtistDataInfo key={`artist genre: ${i}`}>
                 {i} <br />
               </SingleArtistDataInfo>
             );

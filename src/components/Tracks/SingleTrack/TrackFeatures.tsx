@@ -36,7 +36,7 @@ export const TrackFeatures = (props: {
       };
       setFeaturesData(newData);
     });
-  }, []);
+  }, [props.id]);
 
   const pitchClassFromInteger = (integerValue: number | undefined) => {
     const pitchClasses = [
