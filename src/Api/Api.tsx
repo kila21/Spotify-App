@@ -9,8 +9,8 @@ export const setLocalRefreshToken = (refToken: string) => {
 };
 
 const getLocalAccessToken = () => localStorage.getItem("spotify-access-token");
-const getLocalRefreshToken = () =>
-  localStorage.getItem("spotify-refresh-token");
+// const getLocalRefreshToken = () =>
+//   localStorage.getItem("spotify-refresh-token");
 
 //set Access token for the first time , after authentication.
 export const setAccessToken = (code: string) => {
