@@ -64,6 +64,7 @@ const TracksListItem = styled.li`
   list-style: none;
   display: flex;
   margin-bottom: 20px;
+  cursor: pointer;
 `;
 
 const TracksListItemImage = styled.img`
