@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getPlaylist } from "../../Api/Api";
+import { PlaylistItem } from "../../Types/ApiTypes/getPlaylistResponse";
 
 export const Playlist = () => {
-  const [playlists, setPlaylists] = useState<any[]>([]);
+  const [playlists, setPlaylists] = useState<PlaylistItem[] | null>();
 
   useEffect(() => {
     getPlaylist().then((d) => setPlaylists(d.data.items));
-    console.log(playlists[0]);
   }, []);
 
   return (
@@ -15,7 +15,7 @@ export const Playlist = () => {
       <PlaylistHeading>Your Playlist</PlaylistHeading>
       {playlists &&
         playlists.map((item) => (
-          <PlaylistContainer>
+          <PlaylistContainer key={item.id}>
             <PlaylistImage src={item.images[0]?.url} />
             <PlaylistName>{item.name}</PlaylistName>
             <PlaylistTrackNumber>
