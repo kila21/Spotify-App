@@ -14,6 +14,7 @@ import { SingleArtist } from "./components/Artists/SingleArtist.tsx";
 import { SingleTrack } from "./components/Tracks/SingleTrack/SingleTrack.tsx";
 import { Recent } from "./components/Recent/Recent.tsx";
 import { Playlist } from "./components/Playlist/Playlist.tsx";
+import { SinglePlaylist } from "./components/Playlist/SinglePlaylist.tsx";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       { path: "/top-tracks/:id", element: <SingleTrack /> },
       { path: "/recent", element: <Recent /> },
       { path: "/playlist", element: <Playlist /> },
+      {
+        path: "/playlist/:playlistID",
+        element: <SinglePlaylist />,
+      },
     ],
   },
   {
