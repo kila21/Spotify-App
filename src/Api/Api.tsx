@@ -161,3 +161,7 @@ export const getRecentlyPlayedTracks = () => {
 export const getPlaylist = () => {
   return axios.get("https://api.spotify.com/v1/me/playlists", { headers });
 };
+
+export const getPlaylistTracks = (url: string) => {
+  return axios.get(`${url}`, { headers });
+};

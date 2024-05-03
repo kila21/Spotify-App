@@ -2,20 +2,26 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getPlaylist } from "../../Api/Api";
 import { PlaylistItem } from "../../Types/ApiTypes/getPlaylistResponse";
+import { useNavigate } from "react-router";
 
 export const Playlist = () => {
   const [playlists, setPlaylists] = useState<PlaylistItem[] | null>();
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     getPlaylist().then((d) => setPlaylists(d.data.items));
-  }, []);
+  }, [playlists?.length]);
 
   return (
     <PlaylistStyled>
       <PlaylistHeading>Your Playlist</PlaylistHeading>
       {playlists &&
         playlists.map((item) => (
-          <PlaylistContainer key={item.id}>
+          <PlaylistContainer
+            onClick={() => navigate(`/playlist/${item.id}`, { state: item })}
+            key={item.id}
+          >
             <PlaylistImage src={item.images[0]?.url} />
             <PlaylistName>{item.name}</PlaylistName>
             <PlaylistTrackNumber>
@@ -44,6 +50,11 @@ const PlaylistStyled = styled.div`
     width: 100%;
     margin-bottom: 70px;
   }
+  @media (min-width: 1440px) {
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+  }
 `;
 
 const PlaylistHeading = styled.h2`
@@ -51,6 +62,8 @@ const PlaylistHeading = styled.h2`
   font-size: 22px;
   margin-top: 50px;
   letter-spacing: 1.5px;
+  width: 100%;
+  text-align: center;
 `;
 
 const PlaylistContainer = styled.div`
@@ -61,6 +74,9 @@ const PlaylistContainer = styled.div`
   height: auto;
   margin-top: 30px;
   margin-bottom: 50px;
+  @media (min-width: 1440px) {
+    width: 40%;
+  }
 `;
 
 const PlaylistImage = styled.img`

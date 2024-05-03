@@ -1,3 +1,5 @@
+import { TracksItem } from "./getTopTracksResponse";
+
 export interface PlaylistType {
   href: string;
   limit: number;
@@ -48,4 +50,27 @@ interface PlaylistImage {
   url: string;
   height: number | null;
   width: number | null;
+}
+
+// SignelPlaylist Api response
+
+export interface SinglePlaylistTrack {
+  added_at: string;
+  added_by: {
+    external_urls: {
+      spotify: string;
+    };
+    followers: {
+      href: string;
+      total: number;
+    };
+    href: string;
+    id: string;
+    type: string;
+    uri: string;
+  };
+  is_local: boolean;
+  track: TracksItem;
+  type: string;
+  uri: string;
 }
