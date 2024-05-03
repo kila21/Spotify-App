@@ -97,12 +97,12 @@ const SinglePlaylistHeader = styled.div`
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  min-height: 150px;
+  min-height: 200px;
   margin-top: 50px;
   @media (min-width: 769px) {
     width: 40%;
     margin-left: 50px;
-    height: 450px;
+    max-height: 600px;
   }
 `;
 
@@ -112,11 +112,15 @@ const SinglePlaylistImage = styled.img`
   @media (min-width: 769px) {
     display: flex;
   }
+  @media (min-width: 1440px) {
+    width: 70%;
+  }
 `;
 
 const SinglePlaylistHeading = styled.h1`
   font-size: 22px;
   color: white;
+  margin-bottom: 10px;
 
   @media (min-width: 1440px) {
     font-size: 2vw;
@@ -126,6 +130,7 @@ const SinglePlaylistHeading = styled.h1`
 const SinglePlaylistOwner = styled.span`
   color: rgb(155, 155, 155);
   font-size: 18px;
+  margin-bottom: 10px;
 `;
 
 const SinglePlaylistQuantity = styled.span`
@@ -135,13 +140,14 @@ const SinglePlaylistQuantity = styled.span`
 
 const SinglePlaylistRecomendation = styled.button`
   width: 200px;
-  height: 50px;
+  min-height: 50px;
   border-radius: 20px;
   color: white;
   background-color: ${(props) => props.theme.colors.green};
   border: none;
   text-transform: uppercase;
   font-size: 15px;
+  margin-top: 15px;
   @media (max-width: 768px) {
     width: 220px;
     height: 30px;
