@@ -42,9 +42,6 @@ export const SinglePlaylist = () => {
         <SinglePlaylistQuantity>
           {location.state.tracks.total} tracks
         </SinglePlaylistQuantity>
-        <SinglePlaylistRecomendation>
-          get recomendation
-        </SinglePlaylistRecomendation>
       </SinglePlaylistHeader>
 
       <SinglePlaylistTracksStyled>
@@ -136,23 +133,6 @@ const SinglePlaylistOwner = styled.span`
 const SinglePlaylistQuantity = styled.span`
   color: white;
   font-size: 16px;
-`;
-
-const SinglePlaylistRecomendation = styled.button`
-  width: 200px;
-  min-height: 50px;
-  border-radius: 20px;
-  color: white;
-  background-color: ${(props) => props.theme.colors.green};
-  border: none;
-  text-transform: uppercase;
-  font-size: 15px;
-  margin-top: 15px;
-  @media (max-width: 768px) {
-    width: 220px;
-    height: 30px;
-    font-size: 14px;
-  }
 `;
 
 const SinglePlaylistTracksStyled = styled.div`
