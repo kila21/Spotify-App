@@ -27,7 +27,7 @@ export const Dashboard = () => {
   useEffect(() => {
     setTimeout(async () => {
       Logout();
-    }, 50000);
+    }, 500000);
   }, []);
 
   useEffect(() => {
