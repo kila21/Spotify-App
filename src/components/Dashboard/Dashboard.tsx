@@ -19,6 +19,17 @@ export const Dashboard = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const Logout = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
+
+  useEffect(() => {
+    setTimeout(async () => {
+      Logout();
+    }, 50000);
+  }, []);
+
   useEffect(() => {
     switch (window.location.pathname) {
       case "/profile":
