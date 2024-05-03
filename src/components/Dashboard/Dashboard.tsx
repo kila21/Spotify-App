@@ -10,11 +10,14 @@ import {
   faList,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { Link, useLocation } from "react-router-dom";
+import { faSpotify, faGithub } from "@fortawesome/free-brands-svg-icons";
+
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export const Dashboard = () => {
   const [activeItem, setActiveItem] = useState<number>(0);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     switch (window.location.pathname) {
@@ -42,6 +45,14 @@ export const Dashboard = () => {
   return (
     <DashboardStyled>
       <DashboardList>
+        <FontAwesomeIcon
+          onClick={() => navigate("/profile")}
+          icon={faSpotify}
+          style={{
+            color: "#1db954",
+            height: "8%",
+          }}
+        />
         {navList &&
           navList.map((item, index) => (
             <DashboardListItem
@@ -55,6 +66,16 @@ export const Dashboard = () => {
               </Link>
             </DashboardListItem>
           ))}
+        <FontAwesomeIcon
+          onClick={() =>
+            window.open("https://github.com/kila21/Spotify-App", "_blank")
+          }
+          icon={faGithub}
+          style={{
+            color: "rgb(155, 155, 155)",
+            height: "5%",
+          }}
+        />
       </DashboardList>
     </DashboardStyled>
   );
@@ -87,6 +108,15 @@ const DashboardList = styled.ul`
 
   @media (min-width: 769px) {
     flex-direction: column;
+    justify-content: space-around;
+  }
+
+  & > svg {
+    display: none;
+    @media (min-width: 769px) {
+      display: flex;
+      cursor: pointer;
+    }
   }
 `;
 
@@ -104,7 +134,7 @@ const DashboardListItem = styled.li<{ $active: boolean }>`
   }
   @media (min-width: 769px) {
     width: 100%;
-    height: 20%;
+    height: 10%;
     border-left: ${(props) => props.$active && "5px solid rgb(30, 215, 96)"};
   }
 
