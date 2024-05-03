@@ -15,6 +15,7 @@ import { SingleTrack } from "./components/Tracks/SingleTrack/SingleTrack.tsx";
 import { Recent } from "./components/Recent/Recent.tsx";
 import { Playlist } from "./components/Playlist/Playlist.tsx";
 import { SinglePlaylist } from "./components/Playlist/SinglePlaylist.tsx";
+import { ErrorPage } from "./components/Error/Error.tsx";
 
 const router = createBrowserRouter([
   {
@@ -35,11 +36,11 @@ const router = createBrowserRouter([
         path: "/playlist/:playlistID",
         element: <SinglePlaylist />,
       },
+      {
+        path: "*",
+        element: <ErrorPage />,
+      },
     ],
-  },
-  {
-    path: "*",
-    element: <div>ERROOOOOOOOOOOR</div>,
   },
 ]);
 
