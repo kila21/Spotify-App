@@ -14,17 +14,13 @@ function App() {
 
   useEffect(() => {
     if (code) {
-      setAccessToken(code)
-        .then((data) => {
-          if (data.status === 200) {
-            setLocalAccesToken(data.data.access_token);
-            setLocalRefreshToken(data.data.refresh_token);
-            window.location.reload();
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      setAccessToken(code).then((data) => {
+        if (data.status === 200) {
+          setLocalAccesToken(data.data.access_token);
+          setLocalRefreshToken(data.data.refresh_token);
+          window.location.reload();
+        }
+      });
     }
   }, []);
 

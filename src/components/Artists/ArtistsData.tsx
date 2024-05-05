@@ -11,13 +11,9 @@ export const ArtistsData = (props: { load: string }) => {
   const location = useLocation();
 
   useEffect(() => {
-    getUserTopArtists(props.load)
-      .then((data) => {
-        setArtistsData(data.data.items);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    getUserTopArtists(props.load).then((data) => {
+      setArtistsData(data.data.items);
+    });
   }, [props.load]);
 
   const oponSingleArtist = (artist: artistsItem) => {
