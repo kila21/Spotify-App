@@ -22,7 +22,7 @@ export const setAccessToken = (code: string) => {
 
   const form = {
     code: code,
-    redirect_uri: "http://localhost:5173/profile",
+    redirect_uri: "https://spotify-app-kila21.vercel.app/profile",
     grant_type: "authorization_code",
   };
 
